@@ -1,49 +1,60 @@
 <div class="leaderboard-container">
   <mat-card>
-    <h2>Leaderboard</h2>
+    <h2>Top 10 Helyezés</h2>
 
-    <ng-container *ngIf="leaderboard$ | async as leaderboard">
-      <table mat-table [dataSource]="leaderboard" class="mat-elevation-z8">
+    <div class="top-three" *ngIf="leaderboard$ | async as leaderboard">
+      <div 
+        *ngFor="let entry of leaderboard.slice(0,3); let i = index" 
+        class="leaderboard-item top" 
+        [ngClass]="{
+          'first-place': i === 0,
+          'second-place': i === 1,
+          'third-place': i === 2
+        }"
+      >
+      <div class="award">
+        <img *ngIf="i === 0" src="/images/1st-prize.png" alt="1st">
+        <img *ngIf="i === 1" src="/images/2nd-prize.png" alt="2nd">
+        <img *ngIf="i === 2" src="/images/3rd-prize.png" alt="3rd">
+      </div>
 
-        <!-- Helyezés oszlop -->
-        <ng-container matColumnDef="position">
-         <th mat-header-cell *matHeaderCellDef>#</th>
-          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
-        </ng-container>
+      <div class="profile">
+        <span class="name">{{ entry.email }}</span>
+      </div>
 
-        <!-- Award Icon Column -->
-      <ng-container matColumnDef="award">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let element; let i = index">
-          <img *ngIf="i === 0" src="/images/1st-prize.png" alt="1st" class="award-icon" />
-          <img *ngIf="i === 1" src="/images/2nd-prize.png" alt="2nd" class="award-icon" />
-          <img *ngIf="i === 2" src="/images/3rd-prize.png" alt="3rd" class="award-icon" />
-        </td>        
-      </ng-container>
+        <div class="points">
+          {{ entry.reactionTime }} ms
+        </div>
+        <div class="date">
+          {{ entry.timestamp | readableDate }}
+        </div>
+        
+        
+      </div>
 
-        <!-- Email oszlop -->
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
-        </ng-container>
+      <!-- A többiek -->
+      <div 
+        *ngFor="let entry of leaderboard.slice(3); let i = index" 
+        class="leaderboard-item normal"
+      >
 
-        <!-- Reakcióidő oszlop -->
-        <ng-container matColumnDef="reactionTime">
-          <th mat-header-cell *matHeaderCellDef>Reakcióidő (ms)</th>
-          <td mat-cell *matCellDef="let element">{{ element.reactionTime }}</td>
-        </ng-container>
+      <div class="award">
+        {{ i + 4 }}.
+      </div>
 
-        <!-- Dátum oszlop -->
-        <ng-container matColumnDef="timestamp">
-          <th mat-header-cell *matHeaderCellDef>Dátum</th>
-          <td mat-cell *matCellDef="let element">{{ element.timestamp | readableDate }}</td>
-        </ng-container>
+      <div class="profile">
+        <span class="name">{{ entry.email }}</span>
+      </div>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-      </table>
-    </ng-container>
-
+        <div class="points">
+          {{ entry.reactionTime }} ms
+        </div>
+        <div class="date">
+          {{ entry.timestamp | readableDate }}
+        </div>
+        
+       
+      </div>
+    </div>
   </mat-card>
 </div>

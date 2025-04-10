@@ -3,7 +3,7 @@ import { FirebaseService } from '../../services/firebase.service';
 import { LeaderboardEntry } from '../../models/leaderboard-entry.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgIf , NgClass, NgForOf} from '@angular/common';
 import { ReadableDatePipe } from '../../pipes/readable-date.pipe';
 import { Observable, map } from 'rxjs';
 
@@ -15,6 +15,8 @@ import { Observable, map } from 'rxjs';
     MatTableModule,
     AsyncPipe,
     NgIf,
+    NgClass,
+    NgForOf,
     ReadableDatePipe
   ],
   templateUrl: './leaderboard.component.html',

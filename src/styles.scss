@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    45deg,
+    #e0e8ff,
+    #b0baff,
+    #f5ccff,
+    #ffb3d9,
+    #b3ffd9,
+    #e0e8ff
+  );
+  background-size: 400% 400%;
+  animation: gradientFlow 12s ease infinite;
+  font-family: 'Roboto', sans-serif;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 mat-toolbar.navbar {
     display: flex;
     align-items: center;
@@ -69,5 +105,5 @@ mat-toolbar.navbar {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f4f7fc;
+    background: transparent;
   }  
