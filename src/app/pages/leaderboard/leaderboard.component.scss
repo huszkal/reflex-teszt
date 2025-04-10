@@ -135,7 +135,10 @@
 .leaderboard-item.third-place .points,
 .leaderboard-item.first-place .date,
 .leaderboard-item.second-place .date,
-.leaderboard-item.third-place .date {
+.leaderboard-item.third-place .date,
+.leaderboard-item.first-place .level,
+.leaderboard-item.second-place .level,
+.leaderboard-item.third-place .level {
   color: white;
 }
 

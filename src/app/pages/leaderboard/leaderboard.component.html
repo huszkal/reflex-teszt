@@ -25,6 +25,9 @@
         <div class="points">
           {{ entry.reactionTime }} ms
         </div>
+
+        <div class="level">Level {{ calculateLevel(entry.points ?? 0) }}</div>
+
         <div class="date">
           {{ entry.timestamp | readableDate }}
         </div>
@@ -49,6 +52,11 @@
         <div class="points">
           {{ entry.reactionTime }} ms
         </div>
+
+        <div class="level">
+          Level: {{ calculateLevel(entry.points || 0) }}
+        </div>
+
         <div class="date">
           {{ entry.timestamp | readableDate }}
         </div>

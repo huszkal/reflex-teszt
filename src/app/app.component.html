@@ -1,22 +1,26 @@
 <mat-toolbar color="primary" class="navbar">
-    <div class="logo">
-      Reflex Teszt
-    </div>
-  
-    <nav class="nav-links">
-      <a mat-button routerLink="/game">Játék</a>
-      <a mat-button routerLink="/leaderboard">Ranglista</a>
-      <a mat-button routerLink="/register">Regisztráció</a>
-      <a mat-button routerLink="/login">Bejelentkezés</a>
-    </nav>
-  
-    <span class="spacer"></span>
-  
-    <div class="user-info" *ngIf="currentUserEmail">
-      <span class="user-email">{{ currentUserEmail }}</span>
+  <div class="logo">
+    Reflex Teszt
+  </div>
+
+  <nav class="nav-links">
+    <a mat-button routerLink="/game">Játék</a>
+    <a mat-button routerLink="/leaderboard">Ranglista</a>
+  </nav>
+
+  <span class="spacer"></span>
+
+  <div class="user-info">
+    <ng-container *ngIf="currentUserEmail; else loggedOut">
+      <a mat-button routerLink="/profile">
+        <span class="user-email">{{ currentUserEmail }}</span>
+      </a>
       <button mat-raised-button color="accent" (click)="logout()">Kijelentkezés</button>
-    </div>
-  </mat-toolbar>
-  
-  <router-outlet></router-outlet>
-  
+    </ng-container>
+    <ng-template #loggedOut>
+      <a mat-button routerLink="/login">Bejelentkezés</a>
+    </ng-template>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

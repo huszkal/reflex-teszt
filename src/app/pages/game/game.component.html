@@ -23,6 +23,27 @@
     <ng-container *ngIf="gameEnded">
       <p>{{ result }}</p>
       <p>Kattints az újraindításhoz!</p>
+
+      <div *ngIf="pointsEarned > 0" class="score-display">
+        +{{ displayedPoints }} pont
+      </div>
+
+      Összes pontod: {{ animatedTotalPoints }}
+      <div *ngIf="showLevelUp" class="level-up-banner">
+        🎉 Szintlépés! Level {{ newLevel }}
+      </div>
+
+      <div class="progress-wrapper">
+        <div class="level-text left">
+          Szint {{ currentLevel }} <br> ({{ calculateTotalPointsForLevel(currentLevel) }} pont)
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" [style.width.%]="progressPercent"></div>
+        </div>
+        <div class="level-text right">
+          Szint {{ currentLevel + 1 }} <br> ({{ calculateTotalPointsForLevel(currentLevel + 1) }} pont)
+        </div>        
+      </div>
     </ng-container>
   </div>
 </div>

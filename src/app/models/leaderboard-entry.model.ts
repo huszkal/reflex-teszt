@@ -3,5 +3,6 @@ export interface LeaderboardEntry {
     email: string;
     reactionTime: number;
     timestamp: string;
+    points?: number;
   }
   

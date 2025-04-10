@@ -1,0 +1,31 @@
+<div *ngIf="userData" class="profile-container">
+    <p class="email"><strong>Email:</strong> {{ userData.email }}</p>
+    <p class="level"><strong>Szint:</strong> {{ calculateLevel(userData.points) }}</p>
+  
+    <div class="achievement-progress">
+      <p>Achievement haladás:</p>
+      <div class="progress-bar">
+        <div class="progress-bar-fill" [style.width.%]="progressPercentage"></div>
+      </div>
+      <p>{{ completedAchievements }} / {{ totalAchievements }} teljesítve</p>
+    </div>
+  
+    <div class="achievements">
+      <h3>Achievements</h3>
+      <div *ngFor="let achievement of achievements$ | async" 
+           class="achievement-card"
+           [ngClass]="{ 'unlocked': achievement.unlocked }"> <!-- EZ HIÁNYZOTT -->
+  
+        <img [src]="achievement.icon" alt="{{ achievement.title }}" />
+        <div class="achievement-info">
+          <p class="title">{{ achievement.title }}</p>
+          <p class="description">{{ achievement.description }}</p>
+  
+          <div class="mini-progress-bar">
+            <div class="mini-progress-bar-fill" [style.width.%]="achievement.progress || 0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
