@@ -1,1 +1,73 @@
-/* You can add global styles to this file, and also import other style files */
+mat-toolbar.navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: white;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 16px;
+  
+    a {
+      color: white;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: background-color 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+  
+    a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  
+    .active-link {
+      border-bottom: 2px solid #faf0ca;
+      color:#0d3b66;
+    }
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+  
+    strong {
+      color: #faf0ca;
+    }
+  
+    button {
+        color: #0d5b66;
+        border-radius: 10px;
+      background-color: white;
+      transition: background-color 0.5s, color 0.5s;
+    }
+  
+    button:hover {
+      background-color:#0d3b66;
+      color: #0d3b66;
+    }
+  }
+  
+  span {
+    color: black;
+  }
+
+  .auth-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f7fc;
+  }  

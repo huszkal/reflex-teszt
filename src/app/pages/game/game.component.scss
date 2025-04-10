@@ -1,0 +1,55 @@
+.game-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.5s ease;
+    background-color: #f0f4ff; // alap világoskék háttér
+  
+    &.waiting {
+      background-color: #dc2626; // piros
+      color: white;
+    }
+  
+    &.ready {
+      background-color: #22c55e; // zöld
+      color: white;
+    }
+  
+    &.ended {
+      background-color: #f0f4ff; // világoskék vége
+      color: #1e3a8a;
+    }
+  
+    .game-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      min-width: 300px;
+      font-size: 1.2rem;
+      transition: background-color 0.3s, color 0.3s;
+  
+      p {
+        margin: 0.5rem 0;
+        font-weight: 500;
+      }
+    }
+  
+    &.waiting .game-content,
+    &.ready .game-content {
+      background: rgba(255, 255, 255, 0.9);
+      color: #000;
+    }
+  
+    &.ready .game-content {
+      color: #000;
+    }
+  
+    &.ended .game-content {
+      background: white;
+      color: #1e3a8a;
+    }
+  }
+  

@@ -1,0 +1,30 @@
+mat-toolbar {
+    background-color: white;
+    color: #1976d2;
+    padding: 0 24px;
+  
+    span {
+      font-weight: bold;
+    }
+  
+    .spacer {
+      flex: 1 1 auto;
+    }
+  
+    a {
+      margin-right: 16px;
+      text-decoration: none;
+      color: #1976d2;
+      font-weight: bold;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  
+    button {
+      color: #1976d2;
+      font-weight: bold;
+    }
+  }
+  

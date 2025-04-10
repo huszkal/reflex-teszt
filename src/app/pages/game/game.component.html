@@ -1,0 +1,28 @@
+<div
+  class="game-container"
+  [ngClass]="{
+    'ready': signalShown,
+    'waiting': waitingForSignal,
+    'ended': gameEnded
+  }"
+  (click)="handleClick()"
+>
+  <div class="game-content">
+    <ng-container *ngIf="!gameStarted && !gameEnded">
+      <p>Készülj fel a játékra! Kattints a kezdéshez!</p>
+    </ng-container>
+
+    <ng-container *ngIf="waitingForSignal && !gameEnded">
+      <p>{{ message }}</p>
+    </ng-container>
+
+    <ng-container *ngIf="signalShown && !gameEnded">
+      <p>Kattints most!</p>
+    </ng-container>
+
+    <ng-container *ngIf="gameEnded">
+      <p>{{ result }}</p>
+      <p>Kattints az újraindításhoz!</p>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="leaderboard-container">
+    <mat-card>
+      <h2>Leaderboard</h2>
+      <table mat-table [dataSource]="leaderboard" class="mat-elevation-z8">
+  
+        <!-- Pozíció -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef>#</th>
+          <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+        </ng-container>
+  
+        <!-- Email -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+  
+        <!-- Reakcióidő -->
+        <ng-container matColumnDef="reactionTime">
+          <th mat-header-cell *matHeaderCellDef>Reakcióidő (ms)</th>
+          <td mat-cell *matCellDef="let element">{{ element.reactionTime }}</td>
+        </ng-container>
+  
+        <!-- Dátum -->
+        <ng-container matColumnDef="timestamp">
+          <th mat-header-cell *matHeaderCellDef>Dátum</th>
+          <td mat-cell *matCellDef="let element">{{ element.timestamp | readableDate }}</td>
+        </ng-container>
+  
+        <!-- Fejléc és sorok -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      </table>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,79 @@
+.leaderboard-container {
+  width: 90%;
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem 0;
+  box-shadow: 0 .5rem 1rem #5b5be638;
+  margin: 0 auto;
+
+  mat-card {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 1rem;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      display: none; // Opcionális: ha nem szeretnéd a fejléceket
+    }
+
+    tr {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      font-weight: 700;
+      align-items: center;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    tr:nth-child(2) {
+      background-color: dimgray;
+      color: #fff;
+      box-shadow: 0 .2rem .5rem dimgray;
+      transform: scale(1.04);
+      opacity: .97;
+    }
+
+    tr:nth-child(3) {
+      background-color: saddlebrown;
+      color: #fff;
+      box-shadow: 0 .2rem .5rem saddlebrown;
+      transform: scale(1.03);
+      opacity: .94;
+    }
+
+    tr:first-of-type {
+      background-color: darkgoldenrod;
+      color: #fff;
+      box-shadow: 0 .2rem .5rem darkgoldenrod;
+      transform: scale(1.05);
+      opacity: 1;
+    }
+
+    tr:nth-of-type(odd):not(:first-of-type):not(:nth-child(2)):not(:nth-child(3)) {
+      background-color: #eeeeee;
+    }
+
+    td {
+      padding: 0.5rem;
+      text-align: left;
+      white-space: nowrap;
+      flex: 1;
+    }
+  }
+}
+
+.award-icon {
+  width: 32px;
+  height: 32px;
+}

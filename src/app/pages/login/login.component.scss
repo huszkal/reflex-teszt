@@ -1,0 +1,72 @@
+.auth-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f4ff; // világoskék háttér
+  
+    mat-card {
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      background-color: white;
+      text-align: center;
+  
+      h2 {
+        margin-bottom: 24px;
+        font-size: 24px;
+        color: #1e3a8a; // mélykék cím
+        font-weight: bold;
+      }
+  
+      form {
+        display: flex;
+        flex-direction: column;
+  
+        mat-form-field {
+          width: 100%;
+          margin-bottom: 16px;
+  
+          .mat-mdc-form-field-flex {
+            background-color: #e8f0fe;
+          }
+  
+          .mat-mdc-floating-label {
+            color: #1e3a8a;
+          }
+  
+          .mat-mdc-form-field-infix {
+            color: #1e3a8a;
+          }
+        }
+  
+        .error-message {
+          color: red;
+          margin-bottom: 12px;
+          font-weight: bold;
+        }
+  
+        button {
+          margin-top: 16px;
+          background-color: #1e3a8a;
+          color: white;
+          font-weight: bold;
+          border-radius: 8px;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: #3b5bdb;
+          }
+        }
+      }
+  
+      p.error-message {
+        margin-top: 16px;
+        color: red;
+        font-weight: bold;
+      }
+    }
+  }
+  
