@@ -3,21 +3,38 @@
     Reflex Teszt
   </div>
 
-  <nav class="nav-links">
+  <nav class="nav-links desktop-menu">
     <a mat-button routerLink="/game">Játék</a>
     <a mat-button routerLink="/leaderboard">Ranglista</a>
   </nav>
 
   <span class="spacer"></span>
 
-  <div class="user-info">
+  <!-- Mobil Menü Gomb -->
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-menu-button">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/game">Játék</button>
+    <button mat-menu-item routerLink="/leaderboard">Ranglista</button>
     <ng-container *ngIf="currentUserEmail; else loggedOut">
+      <button mat-menu-item routerLink="/profile">Profil</button>
+      <button mat-menu-item (click)="logout()">Kijelentkezés</button>
+    </ng-container>
+    <ng-template #loggedOut>
+      <button mat-menu-item routerLink="/login">Bejelentkezés</button>
+    </ng-template>
+  </mat-menu>
+
+  <div class="user-info desktop-menu">
+    <ng-container *ngIf="currentUserEmail; else loggedOutDesktop">
       <a mat-button routerLink="/profile">
         <span class="user-email">{{ currentUserEmail }}</span>
       </a>
       <button mat-raised-button color="accent" (click)="logout()">Kijelentkezés</button>
     </ng-container>
-    <ng-template #loggedOut>
+    <ng-template #loggedOutDesktop>
       <a mat-button routerLink="/login">Bejelentkezés</a>
     </ng-template>
   </div>

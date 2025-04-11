@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FirebaseService } from './firebase.service';
 import { AuthService } from './auth.service';
 import { AchievementService } from './achievement.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class GameService {
@@ -14,15 +15,8 @@ export class GameService {
     private firebaseService: FirebaseService,
     private authService: AuthService,
     private achievementService: AchievementService
-  ) {}
-
-  startPlayTimeCounter() {
-    this.sessionStartTime = Date.now();
-    this.playTimeInterval = setInterval(() => {
-      this.totalPlayTime += 1000;
-      const progress = Math.min(100, (this.totalPlayTime / (60 * 60 * 1000)) * 100);
-      this.achievementService.updateAchievementProgress('marathon', progress);
-    }, 1000);
+  ) 
+  {
   }
 
   stopPlayTimeCounter() {
@@ -175,9 +169,6 @@ export class GameService {
 
     // Rapid fire
     if (consecutiveFastReactions >= 3) this.achievementService.unlockAchievement('rapid-fire');
-
-    // Maraton
-    if (this.totalPlayTime >= 60 * 60 * 1000) this.achievementService.unlockAchievement('marathon');
 
     // Completionist
     this.achievementService.checkCompletionistAchievement();

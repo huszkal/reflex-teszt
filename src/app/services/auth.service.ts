@@ -11,11 +11,18 @@ export class AuthService {
   currentUser: User | null = null;
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
+  
+  // ÚJ!
+  private authResolvedSubject = new BehaviorSubject<boolean>(false);
+  authResolved$ = this.authResolvedSubject.asObservable();
 
   constructor(private auth: Auth, private router: Router, private firestore: Firestore) {
     onAuthStateChanged(this.auth, user => {
       this.currentUser = user;
-      this.currentUserSubject.next(user); // <<< FONTOS
+      this.currentUserSubject.next(user);
+
+      // ✅ Fontos: auth resolved
+      this.authResolvedSubject.next(true);
     });
   }
 
@@ -45,6 +52,10 @@ export class AuthService {
         this.router.navigate(['/login']);
         return cred.user;
       });
+  }
+
+  getCurrentUser() {
+    return this.currentUser$;
   }
 
   logout(): Promise<void> {

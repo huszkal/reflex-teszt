@@ -50,8 +50,6 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.gameService.startPlayTimeCounter();
-
     const userId = this.authService.currentUser?.uid;
     if (userId) {
       this.firebaseService.getUserData(userId).subscribe(userData => {

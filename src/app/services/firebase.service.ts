@@ -29,6 +29,11 @@ export class FirebaseService {
     return addDoc(reactionCollection, newReaction);
   }
 
+  async setSessionStartTime(userId: string) {
+    const userRef = doc(this.firestore, `users/${userId}`);
+    await updateDoc(userRef, { sessionStart: Timestamp.now() });
+  }
+
   getLeaderboard() {
     const reactionCollection = collection(this.firestore, 'reactionTimes').withConverter<LeaderboardEntry>({
       toFirestore: (entry: LeaderboardEntry) => entry,

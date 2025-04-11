@@ -12,9 +12,9 @@
   
     <div class="achievements">
       <h3>Achievements</h3>
-      <div *ngFor="let achievement of achievements$ | async" 
+      <div *ngFor="let achievement of achievements$ | async"
            class="achievement-card"
-           [ngClass]="{ 'unlocked': achievement.unlocked }"> <!-- EZ HIÁNYZOTT -->
+           [ngClass]="{ 'unlocked': achievement.unlocked }">
   
         <img [src]="achievement.icon" alt="{{ achievement.title }}" />
         <div class="achievement-info">
@@ -22,10 +22,9 @@
           <p class="description">{{ achievement.description }}</p>
   
           <div class="mini-progress-bar">
-            <div class="mini-progress-bar-fill" [style.width.%]="achievement.progress || 0"></div>
+            <div class="mini-progress-bar-fill" [style.width.%]="getAchievementProgress(achievement)"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  
+  </div>  

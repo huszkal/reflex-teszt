@@ -1,30 +1,125 @@
-mat-toolbar {
-    background-color: white;
-    color: #1976d2;
-    padding: 0 24px;
-  
-    span {
-      font-weight: bold;
-    }
-  
-    .spacer {
-      flex: 1 1 auto;
-    }
-  
+/* Navbar alap */
+mat-toolbar.navbar {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  background-color: white;
+  color: #1976d2;
+  justify-content: space-between;
+  position: relative;
+
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: black;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 20px;
+
     a {
-      margin-right: 16px;
-      text-decoration: none;
       color: #1976d2;
       font-weight: bold;
-  
+      text-decoration: none;
+      transition: background-color 0.3s, color 0.3s;
+      padding: 8px 12px;
+      border-radius: 6px;
+
       &:hover {
-        text-decoration: underline;
+        background-color: rgba(25, 118, 210, 0.1);
+        text-decoration: none;
       }
     }
-  
-    button {
-      color: #1976d2;
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+
+    .user-email {
+      color: black;
       font-weight: bold;
     }
+
+    button {
+      color: white;
+      background-color: #1976d2;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #145ea8;
+      }
+    }
   }
-  
+
+  /* Mobil menü ikon */
+  .mobile-menu-button {
+    display: none;
+    color: black;
+
+    mat-icon {
+      font-size: 28px;
+    }
+  }
+
+  /* Fix: mobil menü háttér teljes javítás */
+  ::ng-deep .mat-mdc-menu-panel {
+    background-color: white !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  ::ng-deep .mat-mdc-menu-surface {
+    background-color: white !important;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Menü elemek styling */
+  ::ng-deep .mat-mdc-menu-item {
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #1976d2;
+    transition: background-color 0.3s ease;
+  }
+
+  ::ng-deep .mat-mdc-menu-item:hover {
+    background-color: rgba(25, 118, 210, 0.1);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Reszponzivitás */
+@media (max-width: 768px) {
+  mat-toolbar.navbar {
+    .nav-links,
+    .user-info {
+      display: none;
+    }
+
+    .mobile-menu-button {
+      display: block;
+    }
+  }
+}

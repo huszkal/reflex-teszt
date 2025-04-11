@@ -5,6 +5,7 @@ import { doc, Firestore, getDoc, setDoc, updateDoc, arrayUnion, Timestamp, colle
 import { Auth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
 import { NotificationService } from './notification.service';
+import { GameService } from './game.service';
 
 @Injectable({ providedIn: 'root' })
 export class AchievementService {
@@ -15,14 +16,22 @@ export class AchievementService {
   achievementsUpdated: any;
   
 
-  constructor(private firestore: Firestore, private auth: Auth,private notificationService: NotificationService) {
+  constructor(
+    private firestore: Firestore, 
+    private auth: Auth,
+    private notificationService: NotificationService
+) {
     this.auth.onAuthStateChanged(user => {
       if (user) {
         this.userId = user.uid;
         this.loadAchievements();
       }
     });
-    
+  }
+
+  private updateAchievementInFirestore(achievementId: string, data: any) {
+    const achievementRef = doc(this.firestore, `users/${this.userId}/achievements/${achievementId}`);
+    return setDoc(achievementRef, data, { merge: true });
   }
 
   private loadAchievements() {
@@ -89,7 +98,6 @@ export class AchievementService {
         { id: 'morning-player', title: 'Reggeli játékos', description: 'Játssz reggel 6 előtt.', icon: '/images/achievements/morning-player.png', unlocked: false },
         { id: 'rapid-fire', title: 'Gyors sorozat', description: '3 gyors egymást követő reakció.', icon: '/images/achievements/rapid-fire.png', unlocked: false },
         { id: 'slow-starter', title: 'Lassú indítás', description: 'Reakcióidő 900 ms fölött.', icon: '/images/achievements/slow-starter.png', unlocked: false },
-        { id: 'marathon', title: 'Maraton', description: 'Játssz 1 órán keresztül.', icon: '/images/achievements/marathon.png', unlocked: false },
         { id: 'legendary', title: 'Legendás játékos', description: 'Érj el 50. szintet.', icon: '/images/achievements/legendary.png', unlocked: false },
         { id: 'completionist', title: 'Gyűjtő', description: 'Szerezd meg az összes achievementet!', icon: '/images/achievements/completionist.png', unlocked: false }    
     ];

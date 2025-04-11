@@ -1,13 +1,7 @@
 @keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .leaderboard-container {
@@ -42,8 +36,8 @@
     border-radius: 2px;
     padding: 1rem;
     transition: transform 0.3s, box-shadow 0.3s;
+    flex-wrap: wrap;
 
-    // Általános profil beállítás
     .profile {
       display: flex;
       align-items: center;
@@ -62,14 +56,11 @@
       }
     }
 
-    .date {
+    .date, .points, .level {
       font-weight: bold;
       font-size: small;
-    }
-
-    .points {
-      font-weight: bold;
       white-space: nowrap;
+      margin-top: 0.5rem;
     }
 
     .award {
@@ -85,14 +76,12 @@
       }
     }
 
-    // Top 3 közös beállítások
     &.top {
       box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
       transform: scale(1.02);
       margin-bottom: 0;
     }
 
-    // Első helyezett
     &.first-place {
       background-color: darkgoldenrod;
       transform: scale(1.13);
@@ -101,7 +90,6 @@
       z-index: 3;
     }
 
-    // Második helyezett
     &.second-place {
       background-color: dimgray;
       transform: scale(1.07);
@@ -110,7 +98,6 @@
       z-index: 2;
     }
 
-    // Harmadik helyezett
     &.third-place {
       background-color: saddlebrown;
       transform: scale(1.03);
@@ -119,33 +106,79 @@
       z-index: 1;
     }
 
-    // Normál helyezések
     &.normal {
       background-color: #eeeeee;
       margin-bottom: 0.4rem;
       box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
     }
   }
-// Top 3 helyezett: fehér szín a névhez, dátumhoz és pontszámhoz
-.leaderboard-item.first-place .profile .name,
-.leaderboard-item.second-place .profile .name,
-.leaderboard-item.third-place .profile .name,
-.leaderboard-item.first-place .points,
-.leaderboard-item.second-place .points,
-.leaderboard-item.third-place .points,
-.leaderboard-item.first-place .date,
-.leaderboard-item.second-place .date,
-.leaderboard-item.third-place .date,
-.leaderboard-item.first-place .level,
-.leaderboard-item.second-place .level,
-.leaderboard-item.third-place .level {
-  color: white;
+
+  // Top 3 helyezett: fehér szín a névhez, dátumhoz és pontszámhoz
+  .leaderboard-item.first-place .profile .name,
+  .leaderboard-item.second-place .profile .name,
+  .leaderboard-item.third-place .profile .name,
+  .leaderboard-item.first-place .points,
+  .leaderboard-item.second-place .points,
+  .leaderboard-item.third-place .points,
+  .leaderboard-item.first-place .date,
+  .leaderboard-item.second-place .date,
+  .leaderboard-item.third-place .date,
+  .leaderboard-item.first-place .level,
+  .leaderboard-item.second-place .level,
+  .leaderboard-item.third-place .level {
+    color: white;
+  }
+
+  // Többi helyezett: fekete szín
+  .leaderboard-item.normal .profile .name,
+  .leaderboard-item.normal .points,
+  .leaderboard-item.normal .date {
+    color: black;
+  }
 }
 
-// Többi helyezett: fekete szín
-.leaderboard-item.normal .profile .name,
-.leaderboard-item.normal .points,
-.leaderboard-item.normal .date {
-  color: black;
-}
+/* Reszponzív: Mobilnézet */
+@media (max-width: 768px) {
+  .leaderboard-container {
+    padding-top: 2rem;
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 1rem;
+    }
+
+    .leaderboard-item {
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      padding: 1rem 0.75rem;
+
+      .award {
+        margin-bottom: 0.5rem;
+      }
+
+      .profile {
+        margin-bottom: 0.5rem;
+
+        .name {
+          font-size: 24px;
+          white-space: normal;
+          word-break: break-word;
+        }
+      }
+
+      .points,
+      .level,
+      .date {
+        font-size: 18px;
+        margin-top: 2px;
+      }
+
+      &.first-place,
+      &.second-place,
+      &.third-place {
+        transform: scale(1.02);
+      }
+    }
+  }
 }
