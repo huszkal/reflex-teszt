@@ -22,7 +22,6 @@ body {
   }
 }
 
-/* Navbar */
 mat-toolbar.navbar {
   display: flex;
   align-items: center;
@@ -85,7 +84,6 @@ mat-toolbar.navbar {
   color: #ffffff;
 }
 
-/* Általános */
 span {
   color: black;
 }
@@ -98,7 +96,6 @@ span {
   background: transparent;
 }
 
-/* Body animáció achievement esetén */
 body.achievement-unlocked {
   animation: pulse 1s ease;
 }
@@ -115,7 +112,6 @@ body.achievement-unlocked {
   }
 }
 
-/* Achievement értesítés */
 .notification-container {
   position: fixed;
   top: 20px;

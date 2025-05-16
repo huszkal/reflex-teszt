@@ -111,23 +111,19 @@ export class AchievementService {
   
     if (!achievement) return;
   
-    // 🚫 Ha már unlocked, semmit ne csináljunk!
     if (achievement.unlocked) {
       return;
     }
   
-    // ✅ Lokális update
     const updatedAchievements = currentAchievements.map(ach =>
       ach.id === achievementId ? { ...ach, progress } : ach
     );
   
     this.achievementsSubject.next(updatedAchievements);
   
-    // 🔥 Firestore update, csak progress mentés, nem unlockDate!
     const achievementRef = doc(this.firestore, `users/${this.userId}/achievements/${achievementId}`);
     await setDoc(achievementRef, { progress }, { merge: true });
-  
-    // 🎯 Ha progress elérte a 100%-ot, unlockoljuk
+
     if (progress >= 100) {
       this.unlockAchievement(achievementId);
     }

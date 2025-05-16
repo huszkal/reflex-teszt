@@ -6,12 +6,12 @@
     transition: background-color 0.5s ease;
     background-color: transparent;
     &.waiting {
-      background-color: #dc2626; // piros
+      background-color: #dc2626;
       color: white;
     }
   
     &.ready {
-      background-color: #22c55e; // zöld
+      background-color: #22c55e;
       color: white;
     }
   

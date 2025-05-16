@@ -16,12 +16,11 @@ export class ReadableDatePipe implements PipeTransform {
     if (value instanceof Timestamp) {
       date = value.toDate();
     } else if (typeof value === 'string') {
-      // Próbáljuk meg parsolni a stringet
       const parsed = Date.parse(value);
       if (!isNaN(parsed)) {
         date = new Date(parsed);
       } else {
-        return value; // Ha nem tudja, kiírjuk ahogy van
+        return value;
       }
     } else if (value instanceof Date) {
       date = value;

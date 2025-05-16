@@ -1,0 +1,50 @@
+<div class="queries-container">
+  <h2>📊 Firestore Lekérdezések</h2>
+
+  <div class="grid-layout">
+    <!-- Top 5 játékos -->
+    <div class="query-section">
+      <h3>🏆 Top 5 játékos</h3>
+      <mat-card *ngIf="topPlayers$ | async as players">
+        <div *ngFor="let player of players" class="query-card">
+          <p><strong>Email:</strong> {{ player.email }}</p>
+          <p><strong>Pontok:</strong> {{ player.points }}</p>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Top 5 achievement játékos -->
+    <div class="query-section">
+      <h3>🏅 Legtöbb achievementtel rendelkező játékosok</h3>
+      <mat-card *ngIf="topAchievementPlayers$ | async as achievementPlayers">
+        <div *ngFor="let player of achievementPlayers" class="query-card">
+          <p><strong>Email:</strong> {{ player.email }}</p>
+          <p><strong>Achievementek száma:</strong> {{ player.unlockedAchievements }}</p>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Leggyorsabb reakciók -->
+    <div class="query-section">
+      <h3>⚡ Leggyorsabb reakciók</h3>
+      <mat-card *ngIf="fastestReactions$ | async as reactions">
+        <div *ngFor="let reaction of reactions" class="query-card">
+          <p><strong>Email:</strong> {{ reaction.email }}</p>
+          <p><strong>Reakcióidő:</strong> {{ reaction.reactionTime }} ms</p>
+          <p><strong>Dátum:</strong> {{ reaction.timestamp | readableDate }}</p>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Legfrissebb tippek -->
+    <div class="query-section">
+        <h3>💡 Legfrissebb tippek</h3>
+        <mat-card *ngIf="latestTips$ | async as tips">
+            <div *ngFor="let tip of tips" class="query-card">
+            <p><strong>Email:</strong> {{ tip.email }}</p>
+            <p><strong>Reakcióidő:</strong> {{ tip.reactionTime }} ms</p>
+            <p><strong>Dátum:</strong> {{ tip.timestamp | readableDate }}</p>
+            </div>
+        </mat-card>
+    </div>
+</div>

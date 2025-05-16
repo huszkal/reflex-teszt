@@ -48,7 +48,6 @@ export class AppComponent implements OnInit {
           localStorage.setItem('lastRoute', event.urlAfterRedirects);
         });
   
-        // 💡 Itt figyeljük a user streamet, és frissítjük a local változót!
         this.authService.currentUser$.subscribe(user => {
           this.currentUserEmail = user?.email || null;
         });

@@ -1,4 +1,3 @@
-/* Profil oldal konténer */
 .profile-container {
     max-width: 800px;
     margin: 30px auto;
@@ -14,7 +13,6 @@
     to { opacity: 1; transform: translateY(0); }
   }
   
-  /* Email és szint */
   .profile-container .email,
   .profile-container .level {
     font-size: 16px;
@@ -26,7 +24,6 @@
     color: #2c3e50;
   }
   
-  /* Achievement haladás összesítő */
   .achievement-progress {
     margin: 20px 0;
     background: #f9f9f9;
@@ -42,7 +39,6 @@
     color: #2c3e50;
   }
   
-  /* Nagy progress bar */
   .progress-bar {
     width: 100%;
     height: 12px;
@@ -60,7 +56,6 @@
     transition: width 0.6s ease;
   }
   
-  /* Achievements szekció */
   .achievements {
     margin-top: 30px;
   }
@@ -72,7 +67,6 @@
     font-size: 24px;
   }
   
-  /* Achievement kártya */
   .achievement-card {
     display: flex;
     align-items: center;
@@ -108,8 +102,7 @@
     color: #7f8c8d;
     margin: 4px 0 8px 0;
   }
-  
-  /* Mini progress bar minden achievement alá */
+
   .mini-progress-bar {
     width: 100%;
     height: 6px;
@@ -125,7 +118,6 @@
     transition: width 0.5s ease;
   }
   
-  /* Teljesített achievement kiemelés */
   .achievement-card.unlocked {
     background: linear-gradient(135deg, #a8e063, #56ab2f);
     color: white;

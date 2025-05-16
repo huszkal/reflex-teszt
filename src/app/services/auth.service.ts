@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth, User, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router'; // <<< HOZZÁADJUK
+import { Router } from '@angular/router';
 import { doc, setDoc , Firestore} from '@angular/fire/firestore';
 
 @Injectable({
@@ -30,7 +30,7 @@ export class AuthService {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then(cred => {
         this.currentUser = cred.user;
-        this.currentUserSubject.next(cred.user); // <<< FONTOS
+        this.currentUserSubject.next(cred.user);
         this.router.navigate(['/game']);
         return cred.user;
       });
@@ -40,7 +40,7 @@ export class AuthService {
     return createUserWithEmailAndPassword(this.auth, email, password)
       .then(async cred => {
         this.currentUser = cred.user;
-        this.currentUserSubject.next(cred.user); // <<< FONTOS
+        this.currentUserSubject.next(cred.user);
 
         const userRef = doc(this.firestore, 'users', cred.user.uid);
         await setDoc(userRef, {
@@ -61,7 +61,7 @@ export class AuthService {
   logout(): Promise<void> {
     return signOut(this.auth).then(() => {
       this.currentUser = null;
-      this.currentUserSubject.next(null); // <<< FONTOS
+      this.currentUserSubject.next(null);
       this.router.navigate(['/login']);
     });
   }

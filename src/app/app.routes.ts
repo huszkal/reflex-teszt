@@ -2,11 +2,10 @@ import { Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-  // Default route - figyeljük, ha be van jelentkezve vagy sem
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'game' // Ha nem vagyunk belépve, authGuard elintézi!
+    redirectTo: 'game'
   },
 
   // Publikus oldalak
@@ -33,6 +32,11 @@ export const routes: Routes = [
   {
     path: 'profile',
     loadComponent: () => import('./pages/profile/profile.component').then(m => m.ProfileComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: 'queries',
+    loadComponent: () => import('./pages/queries/queries.component').then(m => m.QueriesComponent),
     canActivate: [authGuard]
   },
 
