@@ -18,18 +18,20 @@ export class FirebaseService {
   ) {}
 
   async saveReactionTime(reactionTime: number) {
-    const reactionCollection = collection(this.firestore, 'reactionTimes');
     const user = this.auth.currentUser;
+    if (!user) return;
+
+    const userReactionCollection = collection(this.firestore, `reactionTimes`);
   
     const newReaction = {
-      email: user?.email || 'anonymous',
-      userId: user?.uid || 'anonymous',
+      email: user.email || 'anonymous',
+      userId: user.uid,
       reactionTime,
       timestamp: Timestamp.now()
     };
   
-    return addDoc(reactionCollection, newReaction);
-  }
+    return addDoc(userReactionCollection, newReaction);
+}
 
   async setSessionStartTime(userId: string) {
     const userRef = doc(this.firestore, `users/${userId}`);
