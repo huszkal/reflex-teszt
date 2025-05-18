@@ -1,5 +1,9 @@
 # Reflex Tesztelő Játék
 
+## Deployolt link
+
+https://reflex-teszt.web.app
+
 ## Projekt futtatása
 
 1. Klónozd a repót:
